@@ -9,6 +9,7 @@ import { MyValidator } from './app.custome.validator';
     templateUrl: './app.productform.view.html'
 })
 export class ProductFormComponent implements OnInit {
+    
     product: ProductInfo;
     private logic: ProductLogic;
     products: Array<ProductInfo>;
