@@ -18,3 +18,35 @@
 <div>{{datej|date:'dd/MM/yyyy'}}</div>
 <br/>
 <div>{{cat|json}}</div>
+
+<hr/>
+<hr/>
+
+<h2>The Custom Pipe Demo</h2>
+Enter Filter String Here
+<input type="text" class="form-control" #prdname (keyup)="setValue()" />
+<hr />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>ProductRowId</td>
+            <td>ProductId</td>
+            <td>ProductName</td>
+            <td>Price</td>
+            <td>CategoryName</td>
+            <td>Manufacturer</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of products | prodfilter:prdname.value">
+            <td>{{p.ProductRowId}}</td>
+            <td>{{p.ProductId}}</td>
+            <td>{{p.ProductName}}</td>
+            <td>{{p.Price}}</td>
+            <td>{{p.CategoryName}}</td>
+            <td>{{p.Manufacturer}}</td>
+            <td>{{p.Description}}</td>
+        </tr>
+    </tbody>
+</table>
