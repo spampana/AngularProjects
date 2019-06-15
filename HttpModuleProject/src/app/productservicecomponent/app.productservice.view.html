@@ -1,0 +1,56 @@
+<div class="container">
+    <form (ngSubmit)="save()" name="frmprd">
+        <div class="form-group">
+            <label for="ProductRowId">ProductRowId</label>
+            <input type="text" name="ProductRowId" [(ngModel)]="product.ProductRowId" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ProductId">ProductId</label>
+            <input type="text" name="ProductId" [(ngModel)]="product.ProductId" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ProductName">ProductName</label>
+            <input type="text" name="ProductName" [(ngModel)]="product.ProductName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="BasePrice">Price</label>
+            <input type="text" name="BasePrice" [(ngModel)]="product.BasePrice" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="CategoryName">Category</label>
+            <select class="form-control" name="CategoryName" [(ngModel)]="product.CategoryName">
+               <option value="0">Select Category</option>
+               <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Manufacturer">Manufacturer</label>
+            <select class="form-control" name="Manufacturer" [(ngModel)]="product.Manufacturer">
+               <option value="0">Select Manufacture</option>
+               <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" name="Description" class="form-control" [(ngModel)]="product.Description">
+        </div>
+        <div class="form-group">
+            <input type="button" (click)="clear()" value="Clear" class="btn btn-warning">
+            <input type="submit" value="Save" class="btn btn-success">
+        </div>
+    </form>
+</div>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td *ngFor="let c of tableColumns">{{c}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prd of products" (click)="getSelectedProduct(prd)">
+                <td *ngFor="let c of tableColumns">{{prd[c]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
