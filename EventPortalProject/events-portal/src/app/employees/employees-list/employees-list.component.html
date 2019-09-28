@@ -1,0 +1,27 @@
+<h1 [innerText]="title"></h1>
+<hr />
+<h6 [innerText]="subTitle"></h6>
+<br />
+
+<table class="table table-hover table-stripped" 
+*ngIf="employees && employees.length >0;else noDataTemplate">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>City</th>
+            <th>Contact #</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td><span [innerText]="employee.employeeName"></span></td>
+            <td><span [innerText]="employee.city"></span></td>
+            <td><span [innerText]="employee.phone"></span></td>
+            <td><span [innerText]="employee.email"></span></td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #noDataTemplate>
+    <h4>The data is currently available, Please try after sometime.</h4>
+</ng-template>

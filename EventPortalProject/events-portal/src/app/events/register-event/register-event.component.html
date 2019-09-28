@@ -1,0 +1,95 @@
+<div class="container">
+    <h1 [innerText]="title"></h1>
+    <hr>
+    <form class="form-horizontal" [formGroup]="newEvent.sepEventForm">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputEventId" class="col-lg-2 control-label">Event Id</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="inputEventId" name="inputEventId"
+                        placeholder="Event ID" autofocus formControlName="eventId">
+                    <div class="alert alert-danger" *ngIf="newEvent.sepEventForm.controls['eventId'].hasError('required')">
+                        Please enter event Id!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEventCode" class="col-lg-2 control-label">Event Code</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputEventCode" name="inputEventCode"
+                        placeholder="Event Code" formControlName="eventCode">
+                    <div class="alert alert-danger" *ngIf="newEvent.sepEventForm.controls['eventCode'].hasError('required')">
+                        Please enter event Code!
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="newEvent.sepEventForm.controls['eventCode'].hasError('maxlength')">
+                        Event code can not exceed more than 6 characters!
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="newEvent.sepEventForm.controls['eventCode'].hasError('minlength')">
+                        Event code can not be less than 6 characters!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEventName" class="col-lg-2 control-label">Event Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputEventName" name="inputEventName"
+                        placeholder="Event Name" formControlName="eventName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEventDescription" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputEventDescription" name="inputEventDescription"
+                        placeholder="Event Description" formControlName="description">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEventStartDate" class="col-lg-2 control-label">Start Date</label>
+                <div class="col-lg-10">
+                    <input type="date" class="form-control" id="inputEventStartDate" name="inputEventStartDate"
+                        formControlName="startDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEventEndDate" class="col-lg-2 control-label">End Date</label>
+                <div class="col-lg-10">
+                    <input type="date" class="form-control" id="inputEventEndDate" name="inputEventEndDate"
+                        formControlName="endDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEventFees" class="col-lg-2 control-label">Fees</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="inputEventFees" name="inputEventFees"
+                        placeholder="Event Fees" formControlName="fees">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTotalRegistration" class="col-lg-2 control-label">Total Registrations</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="inputTotalRegistration" name="inputTotalRegistration"
+                        placeholder="Total Event Registration" formControlName="seatsFilled">
+                        <div class="alert alert-danger" *ngIf="newEvent.sepEventForm.controls['seatsFilled'].hasError('required')">
+                            Please enter Seat Filled!
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="newEvent.sepEventForm.controls['seatsFilled'].hasError('max')">
+                            Seats Filled can not exceed more than 100
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="newEvent.sepEventForm.controls['seatsFilled'].hasError('min')">
+                            Seats Filled can not be less than 0 
+                        </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button (click)="onEventSubmit()" type="button" class="btn btn-primary">Register Event</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
